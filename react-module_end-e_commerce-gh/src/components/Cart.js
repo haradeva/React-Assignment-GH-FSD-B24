@@ -1,26 +1,43 @@
-import React from 'react';
-import { useCart } from '../context/cartContext';
+import React from "react";
+import { useCart } from "../context/cartContext";
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, dispatch } = useCart();
+
+  const handleRemove = (id) => {
+    dispatch({ type: "REMOVE_FROM_CART", payload: { id } });
+  };
+
+  const handleQuantityChange = (id, quantity) => {
+    dispatch({
+      type: "UPDATE_QUANTITY",
+      payload: { id, quantity: Number(quantity) },
+    });
+  };
 
   return (
-    <div className="cart">
+    <div>
       <h2>Your Cart</h2>
-      {cart.map((item) => (
-        <div key={item.id} className="cart-item">
-          <h4>{item.name}</h4>
-          <p>Price: {item.price}</p>
-          <p>Quantity: 
+      {cart.length === 0 ? (
+        <p>Your cart is empty!</p>
+      ) : (
+        cart.map((item) => (
+          <div
+            key={item.id}
+            style={{ border: "1px solid #ccc", padding: "8px", margin: "8px" }}
+          >
+            <h3>{item.name}</h3>
+            <p>${item.price.toFixed(2)}</p>
             <input
               type="number"
+              min="1"
               value={item.quantity}
-              onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+              onChange={(e) => handleQuantityChange(item.id, e.target.value)}
             />
-          </p>
-          <button onClick={() => removeFromCart(item.id)}>Remove</button>
-        </div>
-      ))}
+            <button onClick={() => handleRemove(item.id)}>Remove</button>
+          </div>
+        ))
+      )}
     </div>
   );
 };
