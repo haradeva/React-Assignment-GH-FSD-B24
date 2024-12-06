@@ -4,6 +4,7 @@
     "name": "T-Shirt",
     "price": 19.99,
     "description": "A comfortable cotton T-Shirt",
+    "category": "Clothing",
     "image": "https://via.placeholder.com/150"
   },
   {
@@ -11,6 +12,31 @@
     "name": "Jeans",
     "price": 49.99,
     "description": "Stylish denim jeans",
+    "category": "Clothing",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 3,
+    "name": "Product 1",
+    "price": 100,
+    "description": "Description for Product 1",
+    "category": "Electronics",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 4,
+    "name": "Product 2",
+    "price": 200,
+    "description": "Description for Product 2",
+    "category": "Clothing",
+    "image": "https://via.placeholder.com/150"
+  },
+  {
+    "id": 5,
+    "name": "Product 3",
+    "price": 300,
+    "description": "Description for Product 3",
+    "category": "Electronics",
     "image": "https://via.placeholder.com/150"
   }
 ]
