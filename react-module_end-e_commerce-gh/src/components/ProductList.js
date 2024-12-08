@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import SearchBar from "./SearchBar";
-import Filter from "./Filter";
+import React from "react";
 import ProductCard from "./ProductCard";
 
 const stylesList = {
@@ -9,17 +7,7 @@ const stylesList = {
   justifyContent: "space-around",
 };
 
-const ProductList = ({ products }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-  const handleSearchChange = (term) => {
-    setSearchTerm(term);
-  };
-  const handleFilterChange = (category) => {
-    setSelectedCategory(category);
-  };
-
+const ProductList = ({ products, searchTerm, selectedCategory }) => {
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.name
       .toLowerCase()
@@ -29,10 +17,9 @@ const ProductList = ({ products }) => {
       : true;
     return matchesSearch && matchesCategory;
   });
+
   return (
     <div>
-      <SearchBar onSearchChange={handleSearchChange} />
-      <Filter onFilterChange={handleFilterChange} />
       <div style={stylesList}>
         {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />

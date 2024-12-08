@@ -15,6 +15,12 @@ const Cart = () => {
     });
   };
 
+  const stylesCart = {
+    border: "1px solid #ccc",
+    padding: "8px",
+    margin: "8px 0",
+  };
+
   return (
     <div>
       <h2>Your Cart</h2>
@@ -22,10 +28,7 @@ const Cart = () => {
         <p>Your cart is empty!</p>
       ) : (
         cart.map((item) => (
-          <div
-            key={item.id}
-            style={{ border: "1px solid #ccc", padding: "8px", margin: "8px" }}
-          >
+          <div key={item.id} style={stylesCart}>
             <h3>{item.name}</h3>
             <p>${item.price.toFixed(2)}</p>
             <input

@@ -19,9 +19,9 @@ const Home = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const categories = [
-    ...new Set(productsData.map((product) => product.category)),
-  ];
+  const categories = productsData.length
+    ? [...new Set(productsData.map((product) => product.category))]
+    : [];
   return (
     <div>
       <h1>Welcome to My E-commerce Store!</h1>
@@ -31,7 +31,11 @@ const Home = () => {
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
       />
-      <ProductList products={filteredProducts} />
+      <ProductList
+        products={filteredProducts}
+        searchTerm={searchQuery}
+        selectedCategory={selectedCategory}
+      />
       <Cart />
     </div>
   );

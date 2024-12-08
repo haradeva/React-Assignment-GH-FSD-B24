@@ -19,7 +19,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div style={stylesContainer}>
-      <img src={product.image} style={stylesImage} alt="Unkown" />
+      <img
+        src={product.image || "https://via.placeholder.com/150"}
+        style={stylesImage}
+        alt={product.name || "Product Image"}
+      />
       <h2>{product.name}</h2>
       <p>{product.description}</p>
       <p>${product.price.toFixed(2)}</p>
