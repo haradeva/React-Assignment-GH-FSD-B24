@@ -24,6 +24,9 @@ const Cart = () => {
   return (
     <div>
       <h2>Your Cart</h2>
+      <button onClick={() => dispatch({ type: "CLEAR_CART" })}>
+        Clear Cart
+      </button>
       {cart.length === 0 ? (
         <p>Your cart is empty!</p>
       ) : (
